@@ -15,12 +15,14 @@
     <%= f.label :product %><br />
     <%= f.text_field :product %>
   </div>
-
+ <p>
  <%= f.fields_for :phones, Phone.new, :multipart => true do |f| %>
-<div class="field">
-<%= f.text_field :phone %>
-</div>
+  <%= render :partial => "phones/text_field", :locals=>{:f => f} %>
   <% end %>
+  </p>
+  <p>
+    <%= link_to_add_association 'Add Field', f, :phones, :partial => "phones/text_field" -%>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>
